@@ -5,13 +5,12 @@
 
     <com.facebook.login.widget.ProfilePictureView
         android:id="@+id/profileImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="75dp"
-        android:background="@mipmap/ic_launcher" />
+        android:layout_marginTop="75dp" />
 
 
     <TextView
@@ -45,6 +44,6 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/com_facebook_tooltip_blue_background"
         android:padding="16dp"
-        android:text="Logout from Facebook"
+        android:text="@string/Logout_from_Facebook"
         android:textColor="#fff" />
 </RelativeLayout>

@@ -22,7 +22,6 @@ public class LogoutActivity extends AppCompatActivity {
     private TextView btnLogout, tv_name, tv_gmail, tv_gender;
     private User user;
     private ProfilePictureView profileImage;
-    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,40 +32,12 @@ public class LogoutActivity extends AppCompatActivity {
         tv_name = (TextView) findViewById(R.id.tv_name);
         tv_gmail = (TextView) findViewById(R.id.tv_gmail);
         tv_gender = (TextView) findViewById(R.id.tv_gender);
-        //  profileImage.setProfileId(String.valueOf(R.string.facebook_app_id));
 
-        // fetching facebook's profile picture
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                URL imageURL = null;
-                try {
-                    imageURL = new URL("https://graph.facebook.com/715697225181548/picture?type=large");
-                    //  imageURL = new URL("https://graph.facebook.com/868281133254730/picture?width=120&height=120");
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    bitmap = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
+        tv_name.setText(user.name);
+        tv_gmail.setText(user.email);
+        tv_gender.setText(user.gender);
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                //profileImage.setImageBitmap(bitmap);
-                profileImage.setProfileId("715697225181548");
-                tv_name.setText(user.name);
-                tv_gmail.setText(user.email);
-                tv_gender.setText(user.gender);
-            }
-        }.execute();
-
-
+        profileImage.setProfileId("715697225181548");
         btnLogout = (TextView) findViewById(R.id.btnLogout);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
